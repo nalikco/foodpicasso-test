@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    {% if env == 'development' %}
+        <link rel="stylesheet" href="http://localhost:5173/css/app.css">
+        <script type="module" src="http://localhost:5173/js/app.js"></script>
+    {% else %}
+    <link rel="stylesheet" href="/build/assets/app.css">
+        <script type="module" src="/build/assets/app.js"></script>
+    {% endif %}
+</head>
+<body>
+{% block body %}{% endblock %}
+</body>
+</html>

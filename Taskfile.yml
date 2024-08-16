@@ -1,0 +1,29 @@
+version: '3'
+
+
+env:
+  ENV_FILE: .env
+  CONTAINER_NAME: foodpicasso-test-php
+
+tasks:
+  build:
+    desc: "Builds docker images"
+    cmd: docker compose --env-file $ENV_FILE build {{.CLI_ARGS}}
+  up:
+    desc: "Launches the application"
+    cmd: docker compose --env-file $ENV_FILE up {{.CLI_ARGS}}
+  stop:
+    desc: "Stops the application"
+    cmd: docker compose --env-file $ENV_FILE stop {{.CLI_ARGS}}
+  down:
+    desc: "Stops the application and removes containers"
+    cmd: docker compose --env-file $ENV_FILE down {{.CLI_ARGS}}
+  composer:
+    desc: "Launches Composer command"
+    cmd: docker exec -it $CONTAINER_NAME composer {{.CLI_ARGS}}
+  npm:
+    desc: "Launches NPM command"
+    cmd: docker exec -it $CONTAINER_NAME npm {{.CLI_ARGS}}
+  rector:
+    desc: "Formats files using Rector"
+    cmd: docker exec -it $CONTAINER_NAME ./vendor/bin/rector
