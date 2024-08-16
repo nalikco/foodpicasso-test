@@ -14,7 +14,7 @@ require ROOT_PATH . '/vendor/autoload.php';
 $container = new Container();
 
 $configs = [
-    'env' => 'production',
+    'env' => getenv('ENV'),
 ];
 $container->set('configs', $configs);
 $container->set(StreamFactoryInterface::class, new StreamFactory());
