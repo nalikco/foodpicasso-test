@@ -4,10 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-class DashboardController
+use Psr\Http\Message\ResponseInterface;
+use Slim\Psr7\Request;
+use Slim\Psr7\Response;
+
+class DashboardController extends Controller
 {
-    public function __invoke(): void
+    public function __invoke(Request $request, Response $response): ResponseInterface
     {
-        // TODO: Implement __invoke() method.
+        return $this->view($request, $response, 'dashboard.html.twig');
     }
 }

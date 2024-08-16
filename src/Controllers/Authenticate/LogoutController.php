@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controllers\Authenticate;
 
-class SignOutController
+class LogoutController
 {
     public function __invoke(): void
     {

@@ -1,0 +1,37 @@
+{% extends "layout.html.twig" %}
+
+{% block title %} Вход {% endblock %}
+
+{% block body %}
+    <section class="w-screen h-screen flex justify-center items-center gap-2">
+        <form action="#"
+              class="space-y-3 max-w-sm w-full"
+              method="POST">
+            <div class="space-y-2">
+                <label for="username"
+                       class="block text-lg text-gray-500 ml-2 font-medium">Логин</label>
+                <input type="text"
+                       required
+                       autofocus
+                       placeholder="Введите логин"
+                       class="block bg-gray-200 py-2 px-4 rounded-xl w-full border-2 border-gray-200 focus:outline-none focus:border-indigo-500 transition"
+                       id="username">
+                {#                <div class="ml-2 text-sm text-red-500 font-medium">error</div> #}
+            </div>
+            <div class="space-y-2">
+                <label for="password"
+                       class="block text-lg text-gray-500 ml-2 font-medium">Пароль</label>
+                <input type="password"
+                       required
+                       placeholder="Введите пароль"
+                       class="block bg-gray-200 py-2 px-4 rounded-xl w-full border-2 border-gray-200 focus:outline-none focus:border-indigo-500 transition"
+                       id="password">
+                {#                <div class="ml-2 text-sm text-red-500 font-medium">error</div> #}
+            </div>
+            <button type="submit"
+                    class="w-full bg-indigo-500 hover:bg-indigo-600 transition text-white font-medium py-2 px-4 rounded-xl">
+                Войти
+            </button>
+        </form>
+    </section>
+{% endblock %}

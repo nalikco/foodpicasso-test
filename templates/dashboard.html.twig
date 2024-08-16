@@ -3,5 +3,18 @@
 {% block title %} Dashboard {% endblock %}
 
 {% block body %}
-    body
+    <section class="w-screen h-screen flex justify-center items-center">
+        <section class="flex flex-col gap-3 items-center w-full max-w-md">
+            <h2 class="text-center text-xl font-medium">
+                <span class="text-indigo-500">Username</span>,
+                это Ваш личный кабинет!
+            </h2>
+            <form action=""
+                  method="POST">
+                <button class="bg-red-500 py-2 px-4 text-white font-medium rounded-xl transition hover:bg-red-600">
+                    Выйти
+                </button>
+            </form>
+        </section>
+    </section>
 {% endblock %}
