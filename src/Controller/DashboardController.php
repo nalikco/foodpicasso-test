@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers;
+namespace App\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Psr7\Request;

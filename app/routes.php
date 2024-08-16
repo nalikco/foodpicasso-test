@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Controllers\Authenticate\LoginController;
-use App\Controllers\Authenticate\LogoutController;
-use App\Controllers\Authenticate\RegisterController;
-use App\Controllers\DashboardController;
-use App\Controllers\HomeController;
+use App\Controller\Authenticate\LoginController;
+use App\Controller\Authenticate\LogoutController;
+use App\Controller\Authenticate\RegisterController;
+use App\Controller\DashboardController;
+use App\Controller\HomeController;
 use Slim\App;
 
 return function (App $app): void {

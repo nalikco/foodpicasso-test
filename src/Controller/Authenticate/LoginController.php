@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers\Authenticate;
+namespace App\Controller\Authenticate;
 
-use App\Controllers\Controller;
+use App\Controller\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
-class RegisterController extends Controller
+class LoginController extends Controller
 {
     public function render(Request $request, Response $response): ResponseInterface
     {
-        return $this->view($request, $response, 'authenticate/register.html.twig');
+        return $this->view($request, $response, 'authenticate/login.html.twig');
     }
 
     public function handle()

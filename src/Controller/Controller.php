@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers;
+namespace App\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Slim\Exception\HttpInternalServerErrorException;
@@ -24,5 +24,14 @@ abstract class Controller
         } catch (LoaderError|RuntimeError|SyntaxError) {
             throw new HttpInternalServerErrorException($request);
         }
+    }
+
+    public function json(Response $response, array $body, int $statusCode = 200): ResponseInterface
+    {
+        $response->getBody()->write(json_encode($body));
+
+        return $response
+            ->withStatus($statusCode)
+            ->withHeader('Content-Type', 'application/json');
     }
 }

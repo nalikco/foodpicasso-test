@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers\Authenticate;
+namespace App\Controller\Authenticate;
 
 class LogoutController
 {
