@@ -47,3 +47,9 @@ Building the **frontend**:
 ```shell
 task npm -- run build
 ```
+
+Running **migrations**:
+
+```shell
+task migrations -- migrate
+```
