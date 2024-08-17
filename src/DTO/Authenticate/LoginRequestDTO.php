@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace App\DTO\Authenticate;
 
-
 class LoginRequestDTO
 {
     private string $username;
+
     private string $password;
 
     /**
      * Create an instance from an array of data.
      *
-     * @param array $data The data to populate the instance.
+     * @param  array  $data  The data to populate the instance.
      * @return static The created instance.
      */
     public static function fromArray(array $data): static
     {
-        $instance = new self();
+        $instance = new self;
         $instance->setUsername($data['username']);
         $instance->setPassword($data['password']);
 

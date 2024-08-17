@@ -15,6 +15,14 @@ use Twig\Error\SyntaxError;
 
 abstract class Controller
 {
+    public const int HTTP_STATUS_OK = 200;
+
+    public const int HTTP_STATUS_CREATED = 201;
+
+    public const int HTTP_STATUS_BAD_REQUEST = 400;
+
+    public const int HTTP_STATUS_UNAUTHORIZED = 401;
+
     public function view(Request $request, Response $response, string $template, array $params = []): ResponseInterface
     {
         $view = Twig::fromRequest($request);
@@ -26,7 +34,7 @@ abstract class Controller
         }
     }
 
-    public function json(Response $response, array $body, int $statusCode = 200): ResponseInterface
+    public function json(Response $response, array $body, int $statusCode = self::HTTP_STATUS_OK): ResponseInterface
     {
         $response->getBody()->write(json_encode($body));
 

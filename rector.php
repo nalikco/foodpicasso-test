@@ -10,16 +10,16 @@ use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__ . '/app',
-        __DIR__ . '/public',
-        __DIR__ . '/src',
+        __DIR__.'/app',
+        __DIR__.'/public',
+        __DIR__.'/src',
     ])
     ->withSkip([
-        __DIR__ . '/vendor',
-        __DIR__ . '/storage',
+        __DIR__.'/vendor',
+        __DIR__.'/storage',
     ])
     ->withAutoloadPaths([
-        __DIR__ . '/vendor/autoload.php',
+        __DIR__.'/vendor/autoload.php',
     ])
     ->withSets([
         LevelSetList::UP_TO_PHP_83,

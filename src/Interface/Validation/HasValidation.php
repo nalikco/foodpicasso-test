@@ -11,7 +11,7 @@ interface HasValidation
     /**
      * Validate the provided data.
      *
-     * @param array $data The data to validate.
+     * @param  array  $data  The data to validate.
      *
      * @throws ValidationException If validation fails.
      */

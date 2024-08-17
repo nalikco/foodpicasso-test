@@ -1,6 +1,5 @@
 version: '3'
 
-
 env:
   ENV_FILE: .env
   CONTAINER_NAME: foodpicasso-test-php
@@ -24,6 +23,11 @@ tasks:
   npm:
     desc: "Launches NPM command"
     cmd: docker exec -it $CONTAINER_NAME npm {{.CLI_ARGS}}
-  rector:
-    desc: "Formats files using Rector"
-    cmd: docker exec -it $CONTAINER_NAME ./vendor/bin/rector
+  migrations:
+    desc: "Launches Doctrine migrations command"
+    cmd: docker exec -it $CONTAINER_NAME ./vendor/bin/doctrine-migrations {{.CLI_ARGS}}
+  format:
+    desc: "Formats files using Rector and Pint"
+    cmds:
+      - docker exec -it $CONTAINER_NAME ./vendor/bin/pint
+      - docker exec -it $CONTAINER_NAME ./vendor/bin/rector

@@ -11,9 +11,9 @@ return function (App $app): void {
     $app->addRoutingMiddleware();
     $app->addErrorMiddleware(true, true, true);
 
-    $twig = Twig::create(ROOT_PATH . '/templates', ['cache' => false]);
-    $twig->getEnvironment()->addGlobal('env', $app->getContainer()->get('configs')['env']);
+    $twig = Twig::create(ROOT_PATH.'/templates', ['cache' => false]);
+    $twig->getEnvironment()->addGlobal('env', $app->getContainer()->get('configs')['slim']['env']);
     $app->add(TwigMiddleware::create($app, $twig));
 
-    $app->addMiddleware(new JsonBodyParserMiddleware());
+    $app->addMiddleware(new JsonBodyParserMiddleware);
 };

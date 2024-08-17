@@ -13,9 +13,7 @@ class HomeController extends Controller
 {
     public function __construct(
         public Container $container,
-    )
-    {
-    }
+    ) {}
 
     public function __invoke(Request $request, Response $response): ResponseInterface
     {

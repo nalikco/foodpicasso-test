@@ -9,6 +9,11 @@ services:
       - "5173:5173"
     env_file:
       - .env
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: foodpicasso
+      DB_USER: root
     volumes:
       - .:/var/www
   nginx:

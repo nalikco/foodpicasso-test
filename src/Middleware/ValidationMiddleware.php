@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
+use App\Controller\Controller;
 use App\Interface\Validation\HasValidation;
 use Override;
 use Psr\Http\Message\ResponseInterface;
@@ -17,15 +18,13 @@ readonly class ValidationMiddleware implements MiddlewareInterface
 {
     public function __construct(
         private HasValidation $validation,
-    )
-    {
-    }
+    ) {}
 
     /**
      * Process the incoming request and validate its data.
      *
-     * @param ServerRequestInterface $request The HTTP request.
-     * @param RequestHandlerInterface $handler The request handler.
+     * @param  ServerRequestInterface  $request  The HTTP request.
+     * @param  RequestHandlerInterface  $handler  The request handler.
      * @return ResponseInterface The HTTP response.
      */
     #[Override]
@@ -36,13 +35,13 @@ readonly class ValidationMiddleware implements MiddlewareInterface
 
             return $handler->handle($request);
         } catch (ValidatorException $e) {
-            $response = new Response();
+            $response = new Response;
             $response->getBody()->write(json_encode([
                 'errors' => $e->getMessages(),
             ]));
 
             return $response
-                ->withStatus(400)
+                ->withStatus(Controller::HTTP_STATUS_BAD_REQUEST)
                 ->withHeader('Content-Type', 'application/json');
         }
     }

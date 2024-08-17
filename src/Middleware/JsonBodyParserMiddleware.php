@@ -15,8 +15,8 @@ readonly class JsonBodyParserMiddleware implements MiddlewareInterface
     /**
      * Parse JSON body if the request's Content-Type is 'application/json'.
      *
-     * @param ServerRequestInterface $request The HTTP request.
-     * @param RequestHandlerInterface $handler The request handler.
+     * @param  ServerRequestInterface  $request  The HTTP request.
+     * @param  RequestHandlerInterface  $handler  The request handler.
      * @return ResponseInterface The HTTP response.
      */
     #[Override]

@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Request\Validation\Authenticate;
 
 use App\Interface\Validation\HasValidation;
+use Override;
 use Respect\Validation\Validatable;
 use Respect\Validation\Validator;
 
 readonly class LoginValidation implements HasValidation
 {
-    #[\Override]
+    #[Override]
     public function validate(array $data): void
     {
         $this->getUsernameValidationRules()->assert($data['username'] ?? null);
