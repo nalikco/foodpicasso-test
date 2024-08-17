@@ -4,14 +4,22 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
+use Override;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class JsonBodyParserMiddleware implements MiddlewareInterface
+readonly class JsonBodyParserMiddleware implements MiddlewareInterface
 {
-    #[\Override]
+    /**
+     * Parse JSON body if the request's Content-Type is 'application/json'.
+     *
+     * @param ServerRequestInterface $request The HTTP request.
+     * @param RequestHandlerInterface $handler The request handler.
+     * @return ResponseInterface The HTTP response.
+     */
+    #[Override]
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $contentType = $request->getHeaderLine('Content-Type');
