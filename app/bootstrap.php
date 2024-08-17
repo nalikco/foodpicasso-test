@@ -13,7 +13,6 @@ use App\Service\PasswordHashService;
 use App\Service\RegistrationService;
 use App\Service\SessionService;
 use DI\Container;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Slim\Psr7\Factory\StreamFactory;
@@ -30,11 +29,11 @@ $configs = [
 ];
 $container->set('configs', $configs);
 $container->set(StreamFactoryInterface::class, new StreamFactory);
-$container->set(EntityManagerInterface::class, static fn (Container $container): EntityManager => $entityManagerFactory($container->get('configs')['doctrine']));
-$container->set(UserRepositoryInterface::class, static fn (Container $container): UserRepositoryInterface => $container->make(UserRepository::class));
-$container->set(SessionServiceInterface::class, static fn (Container $container): SessionServiceInterface => $container->make(SessionService::class));
-$container->set(PasswordHashServiceInterface::class, static fn (Container $container): PasswordHashServiceInterface => $container->make(PasswordHashService::class));
-$container->set(AuthenticateServiceInterface::class, static fn (Container $container): AuthenticateServiceInterface => $container->make(AuthenticateService::class));
-$container->set(RegistrationServiceInterface::class, static fn (Container $container): RegistrationServiceInterface => $container->make(RegistrationService::class));
+$container->set(EntityManagerInterface::class, $entityManagerFactory($container->get('configs')['doctrine']));
+$container->set(UserRepositoryInterface::class, $container->make(UserRepository::class));
+$container->set(SessionServiceInterface::class, $container->make(SessionService::class));
+$container->set(PasswordHashServiceInterface::class, $container->make(PasswordHashService::class));
+$container->set(AuthenticateServiceInterface::class, $container->make(AuthenticateService::class));
+$container->set(RegistrationServiceInterface::class, $container->make(RegistrationService::class));
 
 return $container;
