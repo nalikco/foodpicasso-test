@@ -65,6 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     fetchForm('logout-form', () => {
-        window.location.href = '/';
+        window.location.href = '/public';
     });
 });
