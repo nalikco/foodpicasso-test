@@ -56,5 +56,5 @@ Running **migrations**:
 
 ```shell
 task migrations -- migrate # for Taskfile
-docker exec -it foodpicasso-test-php ./vendor/bin/doctrine-migrations # for vanilla docker
+docker exec -it foodpicasso-test-php ./vendor/bin/doctrine-migrations migrate # for vanilla docker
 ```
