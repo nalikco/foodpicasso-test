@@ -32,24 +32,29 @@ Setting up the `.env` file.
 Next, **collect** and **launch** containers:
 
 ```shell
-task up -- -d --build
+task up -- -d --build # for Taskfile
+docker compose --env-file .env build -d --build # for vanilla docker
 ```
 
 Installing **dependencies**:
 
 ```shell
-task composer -- install
-task npm -- ci
+task composer -- install # for Taskfile
+task npm -- ci # for Taskfile
+docker exec -it foodpicasso-test-php composer install # for vanilla docker
+docker exec -it foodpicasso-test-php npm ci # for vanilla docker
 ```
 
 Building the **frontend**:
 
 ```shell
-task npm -- run build
+task npm -- run build # for Taskfile
+docker exec -it foodpicasso-test-php npm run build # for vanilla docker
 ```
 
 Running **migrations**:
 
 ```shell
-task migrations -- migrate
+task migrations -- migrate # for Taskfile
+docker exec -it foodpicasso-test-php ./vendor/bin/doctrine-migrations # for vanilla docker
 ```
