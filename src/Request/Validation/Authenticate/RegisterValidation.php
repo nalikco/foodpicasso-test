@@ -16,6 +16,7 @@ readonly class RegisterValidation implements HasValidation
     {
         $this->getUsernameValidationRules()->assert($data['username'] ?? null);
         $this->getPasswordValidationRules()->assert($data['password'] ?? null);
+        $this->getPasswordConfirmationValidationRules($data)->assert($data['password_confirmation'] ?? null);
     }
 
     /**
@@ -45,5 +46,18 @@ readonly class RegisterValidation implements HasValidation
             ->regex('/[^\d]/')
             ->setName('password')
             ->setTemplate('Должен содержать числа и другие символы и длина должна быть минимум 5 символов.');
+    }
+
+    /**
+     * Get the validation rules for the password confirmation.
+     *
+     * @return Validatable The validation rules for the 'password_confirmation' field.
+     */
+    private function getPasswordConfirmationValidationRules(array $data): Validatable
+    {
+        return Validator::stringType()
+            ->equals($data['password'])
+            ->setName('password_confirmation')
+            ->setTemplate('Должен быть такой же, как и пароль.');
     }
 }

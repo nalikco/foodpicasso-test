@@ -8,10 +8,10 @@ use Doctrine\ORM\ORMSetup;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-return function (array $settings): \Doctrine\ORM\EntityManager {
+return function (array $settings): EntityManager {
     $cache = $settings['dev_mode'] ?
         new ArrayAdapter :
-        new FilesystemAdapter(directory: $settings['doctrine']['cache_dir']);
+        new FilesystemAdapter(directory: $settings['cache_dir']);
 
     $config = ORMSetup::createAttributeMetadataConfiguration(
         $settings['metadata_dirs'],

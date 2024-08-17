@@ -12,6 +12,8 @@ class DashboardController extends Controller
 {
     public function __invoke(Request $request, Response $response): ResponseInterface
     {
-        return $this->view($request, $response, 'dashboard.html.twig');
+        return $this->view($request, $response, 'dashboard.html.twig', [
+            'username' => $request->getAttribute('username'),
+        ]);
     }
 }

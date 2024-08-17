@@ -38,7 +38,7 @@ class RegisterController extends Controller
                 'errors' => [
                     'username' => 'Логин уже занят.',
                 ],
-            ]);
+            ], self::HTTP_STATUS_BAD_REQUEST);
         }
     }
 }

@@ -34,7 +34,7 @@ readonly class AuthenticateService implements AuthenticateServiceInterface
             throw new UnauthenticatedException;
         }
 
-        $this->sessionService->put(self::USER_USERNAME_SESSION_KEY, $user->getId());
+        $this->sessionService->put(self::USER_USERNAME_SESSION_KEY, $user->getUsername());
 
         return $user;
     }

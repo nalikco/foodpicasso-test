@@ -11,10 +11,9 @@ use App\Middleware\AuthenticatedMiddleware;
 use App\Middleware\ValidationMiddleware;
 use App\Request\Validation\Authenticate\LoginValidation;
 use App\Request\Validation\Authenticate\RegisterValidation;
-use DI\Container;
 use Slim\App;
 
-return function (App $app, Container $container): void {
+return function (App $app): void {
     $app->get('/', HomeController::class);
 
     $app->get('/login', [LoginController::class, 'render']);
@@ -27,8 +26,9 @@ return function (App $app, Container $container): void {
     $app->post('/register', [RegisterController::class, 'handle'])
         ->addMiddleware(new ValidationMiddleware(new RegisterValidation));
 
-    $app->get('/dashboard', DashboardController::class);
+    $app->get('/dashboard', DashboardController::class)
+        ->addMiddleware($app->getContainer()->make(AuthenticatedMiddleware::class));
 
     $app->post('/logout', LogoutController::class)
-        ->addMiddleware($container->make(AuthenticatedMiddleware::class));
+        ->addMiddleware($app->getContainer()->make(AuthenticatedMiddleware::class));
 };
